@@ -14,5 +14,6 @@ angular.module('finance', [])
     return {
         currencies: currencies,
         convert: convert
+        
     };
 });
