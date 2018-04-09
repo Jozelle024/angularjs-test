@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./node_modules/angular/angular.js"></script>
     <script src="app.js"></script>
+    <script src="invoice.js"></script>
+    <script src="finance.js"></script>
     <title>Angular testing</title>
 </head>
 <body ng-controller="mainController">
@@ -18,7 +20,7 @@
     <input type="text" ng-model="name" id="name">
     {{ name }}
 
-    <div ng-app="invoice" ng-controller="invoiceController as invoice">
+    <div ng-app="invoice" ng-controller="InvoiceController as invoice">
         <h1>Invoice</h1> 
 
         <div>
@@ -28,13 +30,13 @@
 
         <div>
             <b>Cost: </b>
-            <input type="number" min="0" ng-model="invoice.cost" id="cost" required>
+            <input type="number" min="0" ng-model="invoice.cost" required>
         </div>
 
         <div>
             <b>Currency: </b>
-            <select name="currency" ng-model="invoice.inCurr">
-                <option  ng-repeat="c in invoice.currencies">{{c}}</option>
+            <select ng-model="invoice.inCurr">
+                <option ng-repeat="c in invoice.currencies">{{c}}</option>
             </select>            
         </div>
 
