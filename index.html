@@ -13,9 +13,38 @@
     {{ data }} </br>
     {{ data2 }} </br>
 
-    
+
     <label for="name">Name:</label>
     <input type="text" ng-model="name" id="name">
     {{ name }}
+
+    <div ng-app="invoice" ng-controller="invoiceController as invoice">
+        <h1>Invoice</h1> 
+
+        <div>
+            <b>Quantity: </b>
+            <input type="number" min="0" ng-model="invoice.qty" required>            
+        </div>
+
+        <div>
+            <b>Cost: </b>
+            <input type="number" min="0" ng-model="invoice.cost" id="cost" required>
+        </div>
+
+        <div>
+            <b>Currency: </b>
+            <select name="currency" ng-model="invoice.inCurr">
+                <option  ng-repeat="c in invoice.currencies">{{c}}</option>
+            </select>            
+        </div>
+
+        <div>
+            <b>Total: </b>
+            <span ng-repeat="c in invoice.currencies">
+                {{invoice.total(c) | currency:c}}
+            </span><br>
+            <button class="btn" ng-click="invoice.pay()">Pay</button>
+        </div>
+    </div>
 </body>
 </html>
